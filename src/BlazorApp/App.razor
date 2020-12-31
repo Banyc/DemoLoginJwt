@@ -1,6 +1,8 @@
-﻿<Router AppAssembly="@typeof(Program).Assembly">
+﻿@using BlazorApp.Helpers
+<Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        @* customized route *@
+        <AppRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
     </Found>
     <NotFound>
         <LayoutView Layout="@typeof(MainLayout)">
