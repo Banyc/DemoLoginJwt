@@ -11,6 +11,7 @@ namespace WebApi.Helpers
         public DataContext(IConfiguration configuration)
         {
             Configuration = configuration;
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
