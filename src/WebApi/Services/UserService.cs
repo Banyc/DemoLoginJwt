@@ -69,6 +69,13 @@ namespace WebApi.Services
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
+            // CAUSION: define your own logic here.
+            user.Role = Role.User;
+            if (user.Username == "admin")
+            {
+                user.Role = Role.Admin;
+            }
+
             _context.Users.Add(user);
             _context.SaveChanges();
 

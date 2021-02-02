@@ -49,7 +49,8 @@ namespace WebApi.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                    new Claim(ClaimTypes.Name, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -88,6 +89,7 @@ namespace WebApi.Controllers
             }
         }
 
+        [Authorize(Roles = Role.Admin)]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -96,6 +98,7 @@ namespace WebApi.Controllers
             return Ok(model);
         }
 
+        [Authorize(Roles = Role.Admin)]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -104,6 +107,7 @@ namespace WebApi.Controllers
             return Ok(model);
         }
 
+        [Authorize(Roles = Role.Admin)]
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody]UpdateModel model)
         {
@@ -124,6 +128,7 @@ namespace WebApi.Controllers
             }
         }
 
+        [Authorize(Roles = Role.Admin)]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
