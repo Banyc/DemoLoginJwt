@@ -11,4 +11,4 @@ This is a collection and customization.
 
 ## TODO
 
-- [ ] Support role-based authorization.
+- [x] Support role-based authorization.
