@@ -1,0 +1,59 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "compounds": [
+        {
+            "name": "Compound",
+            "configurations": [
+                "WebApi",
+                "BlazorApp",
+            ]
+        }
+    ],
+    "configurations": [
+        {
+            "name": "BlazorApp",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildBlazorApp",
+            "program": "${workspaceFolder}/src/BlazorApp/bin/Debug/net5.0/BlazorApp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/BlazorApp",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "WebApi",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildWebApi",
+            "program": "${workspaceFolder}/src/WebApi/bin/Debug/net5.0/WebApi.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/WebApi",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+    ],
+}
