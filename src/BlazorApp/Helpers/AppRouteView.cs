@@ -24,7 +24,12 @@ namespace BlazorApp.Helpers
                 var returnUrl = WebUtility.UrlEncode(new Uri(NavigationManager.Uri).PathAndQuery);
                 NavigationManager.NavigateTo($"account/login?returnUrl={returnUrl}");
             }
-            else if (authorizeAttribute != null && AccountService.User != null && authorizeAttribute.Roles != AccountService.User.Role)
+            else if (
+                authorizeAttribute != null &&
+                AccountService.User != null &&
+                authorizeAttribute.Roles != null &&
+                authorizeAttribute.Roles != AccountService.User.Role
+            )
             {
                 // when the user is not permitted because of its role.
                 NavigationManager.NavigateTo($"/");
